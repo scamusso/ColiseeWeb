@@ -52,6 +52,23 @@ public abstract class Gladiateur {
 		System.out.println("Voila mes armes : " + rapport);
 		return tableauArmes;
 	}
+	
+	/**
+	 * 
+	 * Savoir si un gladiateur possede une arme
+	 * 
+	 * @return
+	 */
+	public boolean possedeArme(int idArmeAVerifier) {
+		String tableauArmes[] = new String[mesArmes.size()];
+		int compteur = 0;
+		for (Arme object: mesArmes) {
+			if (object.getIdArme() == idArmeAVerifier)
+				return true;
+			compteur++;	
+		}
+		return false;
+	}
 
 	/**
 	 * 
@@ -141,6 +158,26 @@ public abstract class Gladiateur {
 		}
 
 	}
+	
+	/**
+	 * Permet d'enlever une arme de la collection du gladiateur
+	 * 
+	 * @param arme
+	 */
+	public void enleverArme(Arme arme) {
+		boolean flagArme = false;
+		for (Arme object: mesArmes) {
+			if (object.getIdArme() == arme.getIdArme()) {
+				flagArme = true;
+			}
+		}
+		if (flagArme==true){
+			mesArmes.remove(arme);
+		}
+
+	}
+	
+	
 
 	/**
 	 * 
@@ -206,10 +243,16 @@ public abstract class Gladiateur {
 	}
 
 	//Setters
+	
 
 	public static void setCVieInitiale(int cVieInitiale) {
 		Gladiateur.cVieInitiale = cVieInitiale;
 	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 
 	public void setVie(int vie) {
 		if (!estBienPortant() && !estBlesse()) {
@@ -220,6 +263,8 @@ public abstract class Gladiateur {
 	public void setMesArmes(ArrayList<Arme> armes) {
 		this.mesArmes = armes;
 	}
+	
 
 
+	
 }

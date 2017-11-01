@@ -39,6 +39,11 @@ public class GArme {
 		return toutesLesArmes.get(toutesLesArmes.size()-1);
 	}
 	
+
+	/**
+	 * Getter
+	 */
+	
 	/**
 	 * Recupere une arme par son id dans la liste des armes creees
 	 * @param idArme
@@ -52,10 +57,8 @@ public class GArme {
 		}
 		return null;
 	}
-
-	/**
-	 * Getter
-	 */
+	
+	
 	public static ArrayList<Arme> getToutesLesArmes() {
 		return toutesLesArmes;
 	}

@@ -29,26 +29,34 @@ import modele.Gladiateur;
 
 
 /**
- * 
- * Servlet de suppression d'une arme
- * Il prend en entrée 'id d'une arme et la facade
- * En sortie il retourne sur la page jsp, avec l'arme supprimée
+ * Servlet d'ajout d'arme. Il est appelé lorsqu'on sauvegarde une arme a partir de la jsp creationArme
  * 
  * @author Stephane Camusso
  *
  */
-public class SuppressionArmeServlet extends HttpServlet {
+public class AjoutArmeServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
-		int idArme = Integer.parseInt(req.getParameter("idArme"));
-		Facade partie = (Facade) req.getSession().getAttribute("contexteXML");		
-		partie.supprimerArme(idArme);
+		
+		Facade partie = (Facade) req.getSession().getAttribute("contexteXML");
+		String nom = (String) req.getParameter("nom");
+		int offensive = 0;
+		int defensive = 0;
+		if (!req.getParameter("offensive").isEmpty()) {
+			offensive = Integer.parseInt(req.getParameter("offensive"));
+		}
+		if (!req.getParameter("defensive").isEmpty()) {
+			defensive = Integer.parseInt(req.getParameter("defensive"));
+		}
+		partie.creerUneArme(nom, offensive, defensive);
 		
 		//Lancement du servlet de sauvegarde dans le fichier XML
 		req.setAttribute("contexteXML", partie);
 		req.getRequestDispatcher("sauvegardeXML").forward(req, resp);
+		
 	}
+	
 }
 
 

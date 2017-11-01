@@ -30,25 +30,36 @@ import modele.Gladiateur;
 
 /**
  * 
- * Servlet de suppression d'une arme
- * Il prend en entrée 'id d'une arme et la facade
- * En sortie il retourne sur la page jsp, avec l'arme supprimée
+ * Servlet d'assignation d'une arme a un gladiateur, il est appelé lorsqu'on modifie un gladiateur afin de lui ajouter ou enlever une arme
  * 
  * @author Stephane Camusso
  *
  */
-public class SuppressionArmeServlet extends HttpServlet {
+public class AssignationArmeServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
-		int idArme = Integer.parseInt(req.getParameter("idArme"));
-		Facade partie = (Facade) req.getSession().getAttribute("contexteXML");		
-		partie.supprimerArme(idArme);
 		
-		//Lancement du servlet de sauvegarde dans le fichier XML
+		Facade partie = (Facade) req.getSession().getAttribute("contexteXML");
 		req.setAttribute("contexteXML", partie);
-		req.getRequestDispatcher("sauvegardeXML").forward(req, resp);
+		int idArme = Integer.parseInt(req.getParameter("idArme"));
+		int idGladiateur = Integer.parseInt(req.getParameter("idGladiateur"));
+		String action = req.getParameter("action");
+		
+		//action peut contenir "equiper" ou "desequiper"
+		if(action.equals("desequiper")) {
+			partie.desequipperUneArme(idGladiateur, idArme);
+		} else {
+			partie.donnerUneArme(idGladiateur, idArme);
+		}
+		
+		//On retourne sur la page de modification, les modifications seront sauvegardées a l'enregistrement du gladiateur
+		req.setAttribute("contexteXML", partie);
+		req.setAttribute("idGladiateur", idGladiateur );
+		req.getRequestDispatcher("modificationGladiateur.jsp").forward(req, resp);
+		
 	}
+	
 }
 
 

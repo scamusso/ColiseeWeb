@@ -85,6 +85,11 @@ public class Mirmillon extends Gladiateur {
 	}
 
 
+	public void setPoids(int poids) {
+		this.poids = poids;
+	}
+
+
 	public ArrayList<Gladiateur> getMesAgresseurs() {
 		return mesAgresseurs;
 	}

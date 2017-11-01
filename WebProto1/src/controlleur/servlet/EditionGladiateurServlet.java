@@ -30,25 +30,30 @@ import modele.Gladiateur;
 
 /**
  * 
- * Servlet de suppression d'une arme
- * Il prend en entrée 'id d'une arme et la facade
- * En sortie il retourne sur la page jsp, avec l'arme supprimée
+ * Servlet de redirection pour les gladiateurs
+ * Il permet d'afficher la page de mofication ou de creation selon la demande
  * 
  * @author Stephane Camusso
  *
  */
-public class SuppressionArmeServlet extends HttpServlet {
+public class EditionGladiateurServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
-		int idArme = Integer.parseInt(req.getParameter("idArme"));
-		Facade partie = (Facade) req.getSession().getAttribute("contexteXML");		
-		partie.supprimerArme(idArme);
 		
-		//Lancement du servlet de sauvegarde dans le fichier XML
+		Facade partie = (Facade) req.getSession().getAttribute("contexteXML");
 		req.setAttribute("contexteXML", partie);
-		req.getRequestDispatcher("sauvegardeXML").forward(req, resp);
+		
+		if (!req.getParameter("idGladiateur").equals("null")) {
+			int idGladiateur = Integer.parseInt(req.getParameter("idGladiateur"));
+			req.setAttribute("idGladiateur", idGladiateur );
+			req.getRequestDispatcher("modificationGladiateur.jsp").forward(req, resp);
+		} else {
+			req.getRequestDispatcher("creationGladiateur.jsp").forward(req, resp);
+		}
+		
 	}
+	
 }
 
 

@@ -6,8 +6,10 @@ import modele.Arme;
 import modele.Gladiateur;
 
 /**
+ *  Controlleur permettant la gestion des événement liés aux Gladiateurs
+ * 
  * @author clement
- * Controlleur permettant la gestion des événement liés aux Gladiateurs
+ *
  */
 public class Facade {
 
@@ -95,6 +97,23 @@ public class Facade {
 
 
 	/**
+	 * @return l'arme recherchée
+	 */
+	public static Arme getArme (int idArme) {
+		return gArme.getArme(idArme);
+	}
+	
+	/**
+	 * @return le gladiateur recherché
+	 */
+	public static Gladiateur getGladiateur (int idGladiateur) {
+		return gGladiateur.getGladiateur(idGladiateur);
+	}
+
+
+	
+	
+	/**
 	 * Retourne la liste des agresseur du gladiateur dont l'id est pass� en param�tre
 	 * @param pIdGladiateur
 	 * @return liste des gladiateurs (objet) 
@@ -107,7 +126,7 @@ public class Facade {
 	}
 
 	/**
-	 * Renvoie une cha�ne de carract�re
+	 * Renvoie une chaine de carractere
 	 * @param pIdGladiateur
 	 * @return String 
 	 */
@@ -119,7 +138,7 @@ public class Facade {
 	}
 
 	/**
-	 * Retourne le rapport du gladiateur dont l'id est pass� en param�tre
+	 * Retourne le rapport du gladiateur dont l'id est passé en paramètre
 	 * @param pIdGladiateur
 	 * @return String
 	 */
@@ -131,7 +150,7 @@ public class Facade {
 	}
 
 	/**
-	 * Retourne les armes du gladiateur dont l'id est pass� en param�tre
+	 * Retourne les armes du gladiateur dont l'id est passé en paramètre
 	 * @param pIdGladiateur
 	 * @return ArrayList<Arme>
 	 */
@@ -144,7 +163,7 @@ public class Facade {
 
 
 	/**
-	 * Supprime le gladiateur dont l'id est pass� en param�tre
+	 * Supprime le gladiateur dont l'id est passé en paramètre
 	 * @param pIdGladiateur : int
 	 */
 	public static void supprimerGladiateur(int pIdGladiateur) {
@@ -154,7 +173,7 @@ public class Facade {
 	}
 	
 	/**
-	 * Supprime le gladiateur dont l'id est pass� en param�tre
+	 * Supprime le gladiateur dont l'id est passé en paramètre
 	 * @param pIdGladiateur : int
 	 */
 	public static void supprimerArme(int pIdArme) {
@@ -164,7 +183,7 @@ public class Facade {
 	}
 
 	/**
-	 * Cr�ation d'une nouvelle arme	
+	 * Création d'une nouvelle arme	
 	 * @param pNom : String
 	 * @param pPuissOff : int
 	 * @param pPuissDef : int
@@ -176,7 +195,7 @@ public class Facade {
 
 
 	/**
-	 * Affectation d'une arme � un gladiateur
+	 * Affectation d'une arme a un gladiateur
 	 * @param pIdGladiateur : int
 	 * @param pIdArme : int
 	 */
@@ -185,9 +204,20 @@ public class Facade {
 			gGladiateur.getGladiateur(pIdGladiateur).recevoirArme(gArme.getArme(pIdArme));
 		}
 	}
+	
+	/**
+	 * Desaffectation d'une arme a un gladiateur
+	 * @param pIdGladiateur : int
+	 * @param pIdArme : int
+	 */
+	public static void desequipperUneArme(int pIdGladiateur, int pIdArme) {
+		if (gGladiateur.getGladiateur(pIdGladiateur) !=  null){
+			gGladiateur.getGladiateur(pIdGladiateur).enleverArme(gArme.getArme(pIdArme));
+		}
+	}
 
 	/**
-	 * Retourne la description d'une arme en fonction de l'id pass� en param�tre
+	 * Retourne la description d'une arme en fonction de l'id passé en paramètre
 	 * @param pIdArme
 	 * @return String
 	 */
@@ -199,7 +229,7 @@ public class Facade {
 	}
 
 	/**
-	 * Renvoie le nom de l'arme dont l'id est pass� en param�tre
+	 * Renvoie le nom de l'arme dont l'id est passé en paramètre
 	 * @param pIdArme
 	 * @return String
 	 */

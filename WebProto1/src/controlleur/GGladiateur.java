@@ -10,9 +10,10 @@ import modele.Mirmillon;
 import modele.Retiaire;
 
 /**
+ * Gestionnaire de Gladiateurs
+ * 
  * @author clement
  * 
- * Gestionnaire de Gladiateurs
  */
 public class GGladiateur {
 	
@@ -28,10 +29,10 @@ public class GGladiateur {
 	};
 	
 	/**
-	 * Ajoute un gladiateur de type Mirimillon � la lste des gladiateurs
+	 * Ajoute un gladiateur de type Mirimillon à la liste des gladiateurs
 	 * @param pNom nom du gladiateur
 	 * @param pPoids son poids
-	 * @return l'objet gladiateur cr�er
+	 * @return l'objet gladiateur créer
 	 */
 	public static Gladiateur ajouterMirmillon(String pNom, int pPoids) {
 		tousLesGladiateurs.add(new Mirmillon(GGladiateur.nextIdGladiateur++,pNom,pPoids));
@@ -39,10 +40,10 @@ public class GGladiateur {
 	}
 	
 	/**
-	 * Ajoute un gladiateur de type Mirimillon � la lste des gladiateurs
+	 * Ajoute un gladiateur de type Mirimillon à la lste des gladiateurs
 	 * @param pNom nom du gladiateur
-	 * @param pAgilite son agilit�
-	 * @return l'objet gladiateur cr�er
+	 * @param pAgilite son agilité
+	 * @return l'objet gladiateur créer
 	 */
 	public static Gladiateur ajouterRetiaire(String pNom, int pAgilite) {
 		tousLesGladiateurs.add(new Retiaire(GGladiateur.nextIdGladiateur++,pNom,pAgilite));
@@ -50,7 +51,7 @@ public class GGladiateur {
 	}
 	
 	/**
-	 * M�thode qui renvoie l'ensembles des gladiateurs en jeu
+	 * Méthode qui renvoie l'ensembles des gladiateurs en jeu
 	 * @return Liste de gladiateurs "ArrayList<Gladiateur>()"
 	 */
 	public static ArrayList<Gladiateur> getTousLesGladiateurs() {
@@ -58,7 +59,7 @@ public class GGladiateur {
 	}
 	
 	/**
-	 * Retourne le gladiateur dont l'id est pass� en param�tre
+	 * Methode qui retourne le gladiateur dont l'id est passé en paramètre
 	 * @param pIdGladiateur
 	 * @return Gladiateur
 	 */
@@ -72,7 +73,7 @@ public class GGladiateur {
 	}
 	
 	/**
-	 * Supprime de la liste des gladiateurs le gladiateur correspondant � l'id
+	 * Supprime de la liste des gladiateurs le gladiateur correspondant à l'id
 	 * @param pIdGladiateur
 	 */
 	public static  void supprimerGladiateur(int pIdGladiateur) {

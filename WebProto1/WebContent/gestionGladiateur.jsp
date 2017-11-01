@@ -14,37 +14,25 @@ modele.*
 	<%
 		Facade contexteXML = (Facade) request.getAttribute("contexteXML");
     %>
-    <h1>Sauver les modifications dans le XML</h1>
-	<form action="sauvegardeXML" method="post">
-		<div class="button">
-			<input type="hidden" name="contexteXML" value=<%=contexteXML%> />
-			<button  type="submit">Sauvegarder XML</button>
-		</div>
-	</form>
-    </br>
-    
-    	
-	<h1>Ajouter un gladiateur</h1>
+	<h1>Ajouter un element dans le fichier</h1>
 	<table border="1" cellpadding="10" width="100%">
 		<tr>
-			<th>ID</th>
-			<th>Nom</th>
-			<th>Type</th>
-			<th>Vie / Vie Initiale</th>
-			<th>Ajouter</th>
+			<form action="editionGladiateur" method="post">
+				<input type="hidden" name="idGladiateur" value="null" />
+				<input type="hidden" name="contexteXML" value=<%=contexteXML%> />
+				<th><button type="submit">Ajouter Gladiateur</button></th>
+			</form>
+		</tr>
+		<tr>
+			<form action="editionArme" method="post">
+				<input type="hidden" name="idArme" value="null" />
+				<input type="hidden" name="contexteXML" value=<%=contexteXML%> />
+				<th><button type="submit">Ajouter Arme</button></th>
+			</form>
 		</tr>
 	</table>
 	</br>
-	<h1>Ajouter une arme</h1>
-	<table border="1" cellpadding="10" width="100%">
-		<tr>
-			<th>ID</th>
-			<th>Nom</th>
-			<th>Type</th>
-			<th>Vie / Vie Initiale</th>
-			<th>Ajouter</th>
-		</tr>
-	</table>
+	
 	</br>
   	<h1>Liste des gladiateurs</h1>
 	<table border="1" cellpadding="10" width="100%">
@@ -73,7 +61,7 @@ modele.*
 					</form>
 				</td>
 				<td>
-					<form action="suppressionGladiateur" method="post">
+					<form action="editionGladiateur" method="post">
 						<div class="button">
 							<input type="hidden" name="idGladiateur" value=<%=gladiateur.getIdGladiateur()%> />
 							<input type="hidden" name="contexteXML" value=<%=contexteXML%> />
@@ -114,7 +102,7 @@ modele.*
 					</form>
 				</td>
 				<td>
-					<form action="suppressionArme" method="post">
+					<form action="editionArme" method="post">
 						<div class="button">
 							<input type="hidden" name="idArme" value=<%=arme.getIdArme()%> />
 							<input type="hidden" name="contexteXML" value=<%=contexteXML%> />

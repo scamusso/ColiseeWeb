@@ -91,12 +91,12 @@ public class Retiaire extends Gladiateur  {
 		return cType;
 	}
 
-	private static void setCType(String cType) {
+	public static void setCType(String cType) {
 		Retiaire.cType = cType;
 	}
 
 
-	private void setAgilite(int agilite) {
+	public void setAgilite(int agilite) {
 		this.agilite = agilite;
 	}
 

@@ -31,7 +31,7 @@ import modele.Gladiateur;
 /**
  * 
  * Servlet du traitement du fichier xml
- * Il prend en entr�e le fichier
+ * Il prend en entrée le fichier
  * Il rend en sortie une facade contenant les informations du XML
  * 
  * @author Stephane Camusso
@@ -39,40 +39,49 @@ import modele.Gladiateur;
  */
 public class UploadServlet extends HttpServlet {
 	Facade partie = new Facade();
+	boolean fichierValide = false;
 
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
-
-		try {
 			Facade partie = new Facade();
-			InputStream fileContent = getFileFromHTTP(req);
-			Document xmlParsed =readXml(fileContent);
-			//traitementXML(xmlParsed);
-			partie.lancerJeuDEssai();
-			
-			
-			
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			InputStream fileContent;
+			try {
+				fileContent = getFileFromHTTP(req);
+				
+				if (fichierValide)  {
 
-
-		//Envoie de la facade contenant les informations du XML a la page jsp
-		req.setAttribute("contexteXML", partie);
-		req.getRequestDispatcher("bienvenue.jsp").forward(req, resp);
+					partie.lancerJeuDEssai();
+					//Envoie de la facade contenant les informations du XML a la page jsp
+					req.setAttribute("contexteXML", partie);
+					req.getRequestDispatcher("gestionGladiateur.jsp").forward(req, resp);
+				} else {
+					//rechargement de la page d'upload
+					req.getRequestDispatcher("upload.html").forward(req, resp);
+				}
+				
+			} catch (SAXException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ParserConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 	
 	
 	
 	
-	
-	
-	
+	/**
+	 * Methode permettant de recuperer les informations du fichier
+	 * 
+	 * @param req
+	 * @return le contenu du fichier uploadé
+	 * @throws IOException
+	 * @throws ServletException
+	 * @throws SAXException
+	 * @throws ParserConfigurationException
+	 */
 	public InputStream getFileFromHTTP(HttpServletRequest req) throws IOException, ServletException, SAXException, ParserConfigurationException {
 		//Recuperation du fichier envoyer par le HTML
 		Part filePart = req.getPart("uploadFile");
@@ -81,73 +90,22 @@ public class UploadServlet extends HttpServlet {
 		String fileName = p.getFileName().toString();
 		InputStream fileContent = filePart.getInputStream();
 		//Verification du type de fichier
-		System.out.println(fileName);
 		if((fileName.indexOf(".xml")) == -1 && (fileName.indexOf(".XML")) == -1){
 			System.out.println(fileName + " n'est pas un fichier XML");
-			req.getRequestDispatcher("/index.html");
+		} else {
+			fichierValide = true;
 		}
 		return fileContent;
 	}
 	
 	
 	
-	
-	
-	
-	
-	
 
-	public static Document readXml(InputStream is) throws SAXException, IOException,ParserConfigurationException {
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		dbf.setValidating(false);
-		dbf.setIgnoringComments(false);
-		dbf.setIgnoringElementContentWhitespace(true);
-		dbf.setNamespaceAware(true);
-		DocumentBuilder db = null;
-		db = dbf.newDocumentBuilder();
-		db.setEntityResolver(new NullResolver());
-		return db.parse(is);
-	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public static void traitementXML (Document xmlParsed)  {
-		
-		NodeList nodesGladiateur = xmlParsed.getElementsByTagName("gladiateur");
-		
-		int i;
-		for(i=0;i<=nodesGladiateur.item(i).getChildNodes().getLength()-1;i++)
-		{
-
-			nodesGladiateur.item(i).getChildNodes().item(1).getFirstChild().getNodeValue();
-			nodesGladiateur.item(i).getChildNodes().getLength();
-
-		}
-		
-		
-		
-		
-	}
 }
 
 
 
 
 
-
-class NullResolver implements EntityResolver {
-	public InputSource resolveEntity(String publicId, String systemId) throws SAXException,
-	IOException {
-		return new InputSource(new StringReader(""));
-	}
-
-}
 

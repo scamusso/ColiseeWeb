@@ -115,6 +115,14 @@ public class Arme {
 			System.out.println("puissanceDefensive incorrecte");
 		}
 	}
+	
+	/**
+	 * Met a jour la puissance defensive de l'arme
+	 * @param puissanceDefensive
+	 */
+	public void setNom(String nomArme) {
+		this.nomArme = nomArme;
+	}
 
 	
 
