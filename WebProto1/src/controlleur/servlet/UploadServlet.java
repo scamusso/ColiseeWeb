@@ -26,6 +26,10 @@ import controlleur.Facade;
 
 import modele.Arme;
 import modele.Gladiateur;
+import modele.Mirmillon;
+import modele.ReadXMLFile;
+import modele.Retiaire;
+import modele.ReadXMLFile;
 
 
 /**
@@ -46,12 +50,14 @@ public class UploadServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
 			Facade partie = new Facade();
 			InputStream fileContent;
+			ReadXMLFile readerXML;
 			try {
 				fileContent = getFileFromHTTP(req);
 				
+				
 				if (fichierValide)  {
+					readerXML = new ReadXMLFile(fileContent);
 
-					partie.lancerJeuDEssai();
 					//Envoie de la facade contenant les informations du XML a la page jsp
 					req.setAttribute("contexteXML", partie);
 					req.getRequestDispatcher("gestionGladiateur.jsp").forward(req, resp);
@@ -64,6 +70,9 @@ public class UploadServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (ParserConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

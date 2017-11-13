@@ -40,6 +40,19 @@ public class GGladiateur {
 	}
 	
 	/**
+	 * Ajoute un gladiateur de type Mirimillon ï¿½ la lste des gladiateurs
+	 * @param idGladiateur
+	 * @param pNom nom du gladiateur
+	 * @param pPoids son poids
+	 * @return l'objet gladiateur crï¿½er
+	 * @throws Exception 
+	 */
+	public static Gladiateur ajouterMirmillon(int idGladiateur, String pNom, int pPoids) throws Exception {
+		tousLesGladiateurs.add(new Mirmillon(idGladiateur,pNom,pPoids));
+		return tousLesGladiateurs.get(tousLesGladiateurs.size()-1);
+	}
+	
+	/**
 	 * Ajoute un gladiateur de type Mirimillon à la lste des gladiateurs
 	 * @param pNom nom du gladiateur
 	 * @param pAgilite son agilité
@@ -47,6 +60,19 @@ public class GGladiateur {
 	 */
 	public static Gladiateur ajouterRetiaire(String pNom, int pAgilite) {
 		tousLesGladiateurs.add(new Retiaire(GGladiateur.nextIdGladiateur++,pNom,pAgilite));
+		return tousLesGladiateurs.get(tousLesGladiateurs.size()-1);
+	}
+	
+	/**
+	 * Ajoute un gladiateur de type Mirimillon ï¿½ la lste des gladiateurs
+	 * @param idGladiateur
+	 * @param pNom nom du gladiateur
+	 * @param pAgilite son agilitï¿½
+	 * @return l'objet gladiateur crï¿½er
+	 * @throws Exception 
+	 */
+	public static Gladiateur ajouterRetiaire(int idGladiateur, String pNom, int pAgilite) throws Exception {
+		tousLesGladiateurs.add(new Retiaire(idGladiateur,pNom,pAgilite));
 		return tousLesGladiateurs.get(tousLesGladiateurs.size()-1);
 	}
 	
