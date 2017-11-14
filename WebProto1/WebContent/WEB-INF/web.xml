@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>ColiseeWeb</display-name>
   <welcome-file-list>
-    <welcome-file>upload.html</welcome-file>
+    <welcome-file>/upload.html</welcome-file>
   </welcome-file-list>
   
   <servlet>
@@ -97,5 +97,13 @@
   <servlet-mapping>
     <servlet-name>AssignationArmeServlet</servlet-name>
     <url-pattern>/assignationArme</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>TelechargementServlet</servlet-name>
+    <servlet-class>controlleur.servlet.TelechargementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TelechargementServlet</servlet-name>
+    <url-pattern>/telechargementFichier</url-pattern>
   </servlet-mapping>
 </web-app>

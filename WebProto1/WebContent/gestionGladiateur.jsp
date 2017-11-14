@@ -30,6 +30,9 @@ modele.*
 				<th><button type="submit">Ajouter Arme</button></th>
 			</form>
 		</tr>
+		<tr>
+			<a href="telechargementFichier" target = "_blank">Telecharger le XML</a>
+		</tr>
 	</table>
 	</br>
 	

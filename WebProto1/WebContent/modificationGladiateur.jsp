@@ -63,15 +63,6 @@ modele.*
 		        <label for="agilite">Agilité (pour Retiaire) :</label>
 		        <input type="number" name="agilite" min="0" value="<%=agilite%>"/>
 		    </div>
-		    <div>
-		        <label for="vie">Vie :</label>
-		        <input type="number" name="vie" min="0" value="<%=gladiateur.getVie()%>"/>
-		    </div>
-		    <div>
-		        <label for="vieInitiale">Vie Initiale :</label>
-		        <input type="number" name="vieInitiale" min="0" value="<%=gladiateur.getCVieInitiale()%>"/>
-		    </div>
-
 		    <div class="button">
 		        <button type="submit">Modifier Gladiateur</button>
 		    </div>

@@ -72,13 +72,39 @@ public class Facade {
 	}
 
 	/**
-	 * Cr�er un Mirmillon dans la partie
+	 * Creer un Mirmillon dans la partie
 	 * @param pNom nom du gladiateur
 	 * @param pAgilite agilit� du gladiateur
 	 * @return le gladiateur cr�er
 	 */
 	public static Gladiateur creerMirmillon(String pNom, int pPoids) {
 		return gGladiateur.ajouterMirmillon(pNom, pPoids);
+	}
+	
+
+	/**
+	 *  Créer un Retiaire dans la partie
+	 * @param idGladiateur
+	 * @param pNom nom du gladiateur
+	 * @param pAgilite agilitéé du gladiateur
+	 * @return le gladiateur créer
+	 * @throws Exception
+	 */
+	
+	public static Gladiateur creerRetiaire(int idGladiateur, String pNom, int pAgilite) throws Exception {
+		return gGladiateur.ajouterRetiaire(idGladiateur, pNom, pAgilite);
+	}
+
+	/**
+	 * Ce�er un Mirmillon dans la partie
+	 * @param idGladiateur
+	 * @param pNom nom du gladiateur
+	 * @param pAgilite agilit� du gladiateur
+	 * @return le gladiateur cr�er
+	 * @throws Exception 
+	 */
+	public static Gladiateur creerMirmillon(int idGladiateur, String pNom, int pPoids) throws Exception {
+		return gGladiateur.ajouterMirmillon(idGladiateur, pNom, pPoids);
 	}
 
 	/**

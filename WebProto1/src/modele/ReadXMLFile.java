@@ -20,6 +20,11 @@ import controlleur.Facade;
 import controlleur.GArme;
 import controlleur.GGladiateur;
 
+/**
+ * Lecture d'un fichier XML et instanciation des gladiateurs et armes qu'il contient
+ * @author Aline
+ *
+ */
 public class ReadXMLFile {
 	
 	private static ArrayList<Gladiateur> gladiateursDuFichier;
@@ -56,6 +61,7 @@ public class ReadXMLFile {
 		    final int nbRacineNoeuds = racineNoeuds.getLength();
 		    
 		    
+		    
 				
 		    for (int i = nbRacineNoeuds-1; i>=0; i--) {
 		    	
@@ -63,15 +69,16 @@ public class ReadXMLFile {
 		            
 		        	if(racineNoeuds.item(i).getNodeName().equals("gladiateurs")){
 		        		
-		        		// Noeud contenant les gladiateurs et armes
+		        		// Noeud contenant les gladiateurs
 		            	final Element gladiateurs = (Element) racineNoeuds.item(i);
-		            	
 		            	gladiateursDuFichier = this.getGladiateursFromDOM(gladiateurs);
 		        		
-		            }else if(racineNoeuds.item(i).getNodeName().equals("armes")){ //Recuperation Armes
-				    	// Noeud contenant les gladiateurs et armes
+		            }else if(racineNoeuds.item(i).getNodeName().equals("armes")){
+				    	
+		            	// Noeud contenant les armes
 		            	final Element armes = (Element) racineNoeuds.item(i);
 		            	armesDuFichier = this.getArmesFromDOM(armes);
+		            	
 				    }
 			    }	
 	        }
@@ -87,6 +94,28 @@ public class ReadXMLFile {
         }		
     }
     
+    private static ArrayList<Gladiateur> getGladiateursDuFichier() {
+		return gladiateursDuFichier;
+	}
+
+	private static void setGladiateursDuFichier(ArrayList<Gladiateur> gladiateursDuFichier) {
+		ReadXMLFile.gladiateursDuFichier = gladiateursDuFichier;
+	}
+
+	private static ArrayList<Arme> getArmesDuFichier() {
+		return armesDuFichier;
+	}
+
+	private static void setArmesDuFichier(ArrayList<Arme> armesDuFichier) {
+		ReadXMLFile.armesDuFichier = armesDuFichier;
+	}
+
+	/**
+     * Recupere la liste des gladiateurs du fichier xml et les instancies puis stocke tous les gladiateurs instanciees dans un tableau
+     * @param gladiateurs noeuds XML contenant les gladiateurs
+     * @return tableau des gladiateurs instanciees
+     * @throws Exception
+     */
     public ArrayList getGladiateursFromDOM(Element gladiateurs) throws Exception{
     	ArrayList<Gladiateur> gladiateursDuDOM = new ArrayList<>();
     	    	
@@ -117,8 +146,15 @@ public class ReadXMLFile {
 		    	
 		    }else{
 		    	
-		    	final Element poids = (Element) gladiateur.getElementsByTagName("poids").item(0);
-			    int poidsGladiateur = Integer.parseInt(poids.getTextContent());
+		    	int poidsGladiateur;
+			    try {
+			    	final Element poids = (Element) gladiateur.getElementsByTagName("poids").item(0);
+				    poidsGladiateur = Integer.parseInt(poids.getTextContent());
+			    } 
+			    catch(java.lang.NumberFormatException e)
+			    {
+			    	poidsGladiateur = 0 ;
+			    }
 			    
 		    	gladiateursDuDOM.add(GGladiateur.ajouterMirmillon(idGladiateur, nomGladiateur, poidsGladiateur));
 		    	
@@ -141,17 +177,7 @@ public class ReadXMLFile {
     	
     }
     
-    public static ArrayList<Gladiateur> getGladiateursDuFichier() {
-		return gladiateursDuFichier;
-	}
-
-
-	public static ArrayList<Arme> getArmesDuFichier() {
-		return armesDuFichier;
-	}
-
-
-	/**
+    /**
      * Recupere la liste d'armes du fichier xml et les instancies puis stocke toutes les armes instanciees dans un tableau
      * @param armes noeuds XML contenant les armes
      * @return tableau des armes instanciees
@@ -171,8 +197,17 @@ public class ReadXMLFile {
 			final Element nom = (Element) arme.getElementsByTagName("nom").item(0);
 		    String nomArme = nom.getTextContent();
 		    
-		    final Element puissancOffensive = (Element) arme.getElementsByTagName("puissancOffensive").item(0);
-		    int puissancOffensiveArme = Integer.parseInt(puissancOffensive.getTextContent());
+		    int puissancOffensiveArme;
+		    try {
+			    final Element puissancOffensive = (Element) arme.getElementsByTagName("puissancOffensive").item(0);
+			    puissancOffensiveArme = Integer.parseInt(puissancOffensive.getTextContent());
+		    } 
+		    catch(java.lang.NullPointerException e)
+		    {
+			    final Element puissancOffensive = (Element) arme.getElementsByTagName("puissanceOffensive").item(0);
+			    puissancOffensiveArme = Integer.parseInt(puissancOffensive.getTextContent());
+		    }
+
 		    
 		    final Element puissanceDefensive = (Element) arme.getElementsByTagName("puissanceDefensive").item(0);
 		    int puissanceDefensiveArme = Integer.parseInt(puissanceDefensive.getTextContent());

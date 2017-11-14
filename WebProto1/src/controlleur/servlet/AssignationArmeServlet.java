@@ -32,6 +32,17 @@ import modele.Gladiateur;
  * 
  * Servlet d'assignation d'une arme a un gladiateur, il est appelé lorsqu'on modifie un gladiateur afin de lui ajouter ou enlever une arme
  * 
+ *Il recoit les informations suivantes :
+ * - La partie (facade)
+ * - L'id de l'arme concernée
+ * - L'id du gladiateur concerné
+ * - L'action a effectuer : equiper ou desequiper
+ * 
+ * Il renvoie les informations suivantes :
+ * - La partie (facade) mise a jour
+ * - L'id du gladiateur concerné
+ * 
+ * 
  * @author Stephane Camusso
  *
  */

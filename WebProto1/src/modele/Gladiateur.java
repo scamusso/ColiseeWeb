@@ -228,7 +228,7 @@ public abstract class Gladiateur {
 
 	public abstract ArrayList<Gladiateur> getMesAggresseurs();
 
-	public ArrayList<Arme> getMesArmes() {
+	public ArrayList<Arme> getMesArmes() {	
 		return mesArmes;
 	}
 

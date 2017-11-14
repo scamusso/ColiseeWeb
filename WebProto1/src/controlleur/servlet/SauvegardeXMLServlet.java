@@ -2,7 +2,6 @@ package controlleur.servlet;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +21,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import controlleur.Facade;
-
 import modele.Arme;
 import modele.Gladiateur;
 import modele.Mirmillon;
@@ -34,7 +32,7 @@ import modele.Retiaire;
  * 
  * Servlet de sauvegarde des modifications de l'XML
  * Il prend en entrée la facade
- * En sortie il retourne le XML modifié
+ * En sortie il retourne le XML modifié dans un repetoire fixe sur le serveur C:\temp
  * 
  * @author Stephane Camusso
  *
@@ -73,7 +71,7 @@ public class SauvegardeXMLServlet extends HttpServlet {
 		Element gladiateurArmeNode= null;
 		Element armeNode= null;
 		Element armeSousNode= null;
-
+		Attr idAttribut = null;
 
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		try {
@@ -82,7 +80,7 @@ public class SauvegardeXMLServlet extends HttpServlet {
 
 			// creation de la structure root (colisee)
 			Element rootEle = dom.createElement("colisee");
-			Attr idAttribut;
+			
 			// creation de la structure pour la liste des gladiateurs
 			e = dom.createElement("gladiateurs");
 			rootEle.appendChild(e);
@@ -115,7 +113,9 @@ public class SauvegardeXMLServlet extends HttpServlet {
 					gladiateurSousNode = dom.createElement("poids");
 					gladiateurSousNode.appendChild(dom.createTextNode(""));
 					gladiateurNode.appendChild(gladiateurSousNode);
-				} else if (gladiateur.getType().equals("mirmillon") || gladiateur.getType().equals("Mirmillon") ) {
+				}
+				else if (gladiateur.getType().equals("mirmillon") || gladiateur.getType().equals("Mirmillon") ) 
+				{
 					//Dans le cas ou c'est un mirmillon on lui assigne une valeur pour le poids et une valeur vide pour l'agilité
 					gladiateurSousNode = dom.createElement("poids");
 					Mirmillon mirmillon = (Mirmillon)gladiateur;
@@ -125,12 +125,18 @@ public class SauvegardeXMLServlet extends HttpServlet {
 					gladiateurSousNode.appendChild(dom.createTextNode(""));
 					gladiateurNode.appendChild(gladiateurSousNode);
 				}
-
 				//Creation de la structure des armes, il peut y avoir plusieurs armes par gladiateur, d'ou la boucle for
 				gladiateurSousNode = dom.createElement("armes");
 				gladiateurNode.appendChild(gladiateurSousNode);
+
+				
+				System.out.println(gladiateur.getMesArmes().size());
+				System.out.println("----------------------------");
+
+				
 				for(Arme armeGladiateur : gladiateur.getMesArmes()){
 					gladiateurArmeNode = dom.createElement("arme");
+					
 					idAttribut = dom.createAttribute("id");
 					idAttribut.setValue( String.valueOf(armeGladiateur.getIdArme()));
 					gladiateurArmeNode.setAttributeNode(idAttribut);
@@ -148,12 +154,15 @@ public class SauvegardeXMLServlet extends HttpServlet {
 				e.appendChild(armeNode);
 
 				//On assigne l'id en attribut dans la node arme
-				armeSousNode = dom.createElement("id");
-				armeSousNode.appendChild(dom.createTextNode(String.valueOf(arme.getIdArme())));
-				armeNode.appendChild(armeSousNode);
+				idAttribut = dom.createAttribute("id");
+				idAttribut.setValue(String.valueOf(arme.getIdArme()));
+				armeNode.setAttributeNode(idAttribut);
+				e.appendChild(armeNode);
 				armeSousNode = dom.createElement("nom");
 				armeSousNode.appendChild(dom.createTextNode(arme.getNomArme()));
 				armeNode.appendChild(armeSousNode);
+				
+				
 				//ATTENTION puissancOffensive dans le XML de base
 				armeSousNode = dom.createElement("puissanceOffensive");
 				armeSousNode.appendChild(dom.createTextNode(String.valueOf(arme.getPuissanceOffensive())));
@@ -171,8 +180,9 @@ public class SauvegardeXMLServlet extends HttpServlet {
 				tr.setOutputProperty(OutputKeys.INDENT, "yes");
 				tr.setOutputProperty(OutputKeys.METHOD, "xml");
 				tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+
 				tr.transform(new DOMSource(dom), 
-						new StreamResult(new FileOutputStream("C://temp//test.xml")));
+						new StreamResult(new FileOutputStream("C://temp//xmlSortie.xml")));
 
 
 			} catch (TransformerException te) {
