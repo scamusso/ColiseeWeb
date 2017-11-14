@@ -48,29 +48,26 @@ public class UploadServlet extends HttpServlet {
 				if (fichierValide)  {
 					//Lecture du fichier XML
 					readerXML = new ReadXMLFile(fileContent);
+					
+					//Mise a jour des index de la partie en fonction de ceux recuperes dans le fichier XML
 					for(Gladiateur gladiateur : partie.listerTousLesGladiateurs ()) {
 						GGladiateur.nextIdGladiateur++;
 					}
 					for(Arme armes : partie.listerToutesLesArmes()) {
 						GArme.nextIdArme++;
 					}
+					
 					//Envoie de la facade contenant les informations du XML a la page jsp
 					req.setAttribute("contexteXML", partie);
 					req.getRequestDispatcher("sauvegardeXML").forward(req, resp);
+					
 				} else {
 					//rechargement de la page d'upload
 					req.getRequestDispatcher("upload.html").forward(req, resp);
 				}
-				
-			} catch (SAXException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ParserConfigurationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Erreur lors de l'upload du fichier XML");
+				req.getRequestDispatcher("upload.html").forward(req, resp);
 			}
 	}
 	
@@ -78,13 +75,14 @@ public class UploadServlet extends HttpServlet {
 	
 	/**
 	 * Methode permettant de recuperer les informations du fichier
-	 * @param req
-	 * @return
-	 * @throws IOException
-	 * @throws ServletException
-	 * @throws SAXException
-	 * @throws ParserConfigurationException
+	 * @param req Requete HTML
+	 * @return le contenu du fichier XML
+	 * @throws IOException Exception
+	 * @throws ServletException Exception
+	 * @throws SAXException Exception
+	 * @throws ParserConfigurationException Exception 
 	 */
+
 	public InputStream getFileFromHTTP(HttpServletRequest req) throws IOException, ServletException, SAXException, ParserConfigurationException {
 		//Recuperation du fichier envoyer par le HTML
 		Part filePart = req.getPart("uploadFile");
@@ -101,11 +99,7 @@ public class UploadServlet extends HttpServlet {
 		}
 		return fileContent;
 	}
-	
-	
 
-
-	
 }
 
 

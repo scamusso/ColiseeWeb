@@ -59,6 +59,7 @@ public class ModificationGladiateurServlet extends HttpServlet {
 				try {
 					partie.creerRetiaireID(idGladiateur, nom, agilite);
 				} catch (Exception e1) {
+					System.out.println("Erreur lors de la creation du Retiaire pour la modification du type d'un Gladiateur");
 					req.setAttribute("contexteXML", partie);
 					req.getRequestDispatcher("sauvegardeXML").forward(req, resp);
 				}
@@ -78,6 +79,7 @@ public class ModificationGladiateurServlet extends HttpServlet {
 				try {
 					partie.creerMirmillonID(idGladiateur, nom, poids);
 				} catch (Exception e1) {
+					System.out.println("Erreur lors de la creation du Mirmillon pour la modification du type d'un Gladiateur");
 					req.setAttribute("contexteXML", partie);
 					req.getRequestDispatcher("sauvegardeXML").forward(req, resp);
 				}
