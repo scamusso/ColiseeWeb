@@ -159,6 +159,7 @@ public abstract class Gladiateur {
 
 	}
 	
+	
 	/**
 	 * Permet d'enlever une arme de la collection du gladiateur
 	 * 

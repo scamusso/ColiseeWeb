@@ -37,7 +37,7 @@ public class AjoutGladiateurServlet extends HttpServlet {
 		String type = (String) req.getParameter("type");
 		int poids = 0;
 		int agilite = 0;
-		
+
 		if (!req.getParameter("poids").isEmpty()) {
 			poids = Integer.parseInt(req.getParameter("poids"));
 		}

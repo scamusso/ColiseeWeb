@@ -17,7 +17,7 @@ public class GArme {
 	 * Id de la prochaine arme
 	 * s'incremente a la creation d'une arme
 	 */
-	private static int nextIdArme = 1;
+	public static int nextIdArme = 1;
 	/**
 	 * Liste des armes creees
 	 */

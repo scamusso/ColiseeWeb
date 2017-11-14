@@ -15,7 +15,9 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import controlleur.Facade;
+import controlleur.GArme;
 import controlleur.GGladiateur;
+import modele.Arme;
 import modele.Gladiateur;
 import modele.Mirmillon;
 import modele.ReadXMLFile;
@@ -46,7 +48,12 @@ public class UploadServlet extends HttpServlet {
 				if (fichierValide)  {
 					//Lecture du fichier XML
 					readerXML = new ReadXMLFile(fileContent);
-
+					for(Gladiateur gladiateur : partie.listerTousLesGladiateurs ()) {
+						GGladiateur.nextIdGladiateur++;
+					}
+					for(Arme armes : partie.listerToutesLesArmes()) {
+						GArme.nextIdArme++;
+					}
 					//Envoie de la facade contenant les informations du XML a la page jsp
 					req.setAttribute("contexteXML", partie);
 					req.getRequestDispatcher("sauvegardeXML").forward(req, resp);

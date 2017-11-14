@@ -19,7 +19,6 @@ import org.xml.sax.SAXException;
 import controlleur.Facade;
 import controlleur.GArme;
 import controlleur.GGladiateur;
-import jdk.internal.org.xml.sax.SAXParseException;
 
 /**
  * Lecture d'un fichier XML et instanciation des gladiateurs et armes qu'il contient
@@ -38,53 +37,51 @@ public class ReadXMLFile {
          */
         final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             	
-	        try
-	        {
+	        try {
 	            /*
 	             * Etape 2 : creation d'un parseur
 	             */
 	            final DocumentBuilder builder = factory.newDocumentBuilder();
 				
-			    /*
-			     * Etape 3 : creation d'un Document
-			     */
-	            final Document document = builder.parse(fileContent);
-	        
+		    /*
+		     * Etape 3 : creation d'un Document
+		     */
+		    final Document document= builder.parse(fileContent);
 		   
 						
-			    /*
-			     * Etape 4 : recuperation de l'Element racine
-			     */
-			    final Element racine = document.getDocumentElement();
+		    /*
+		     * Etape 4 : recuperation de l'Element racine
+		     */
+		    final Element racine = document.getDocumentElement();
+			
+		    /*
+		     * Etape 5 : recuperation des personnes
+		     */
+		    final NodeList racineNoeuds = racine.getChildNodes();
+		    final int nbRacineNoeuds = racineNoeuds.getLength();
+		    
+		    
+		    
 				
-			    /*
-			     * Etape 5 : recuperation des personnes
-			     */
-			    final NodeList racineNoeuds = racine.getChildNodes();
-			    final int nbRacineNoeuds = racineNoeuds.getLength();
-			    
-			    
-			    
-					
-			    for (int i = nbRacineNoeuds-1; i>=0; i--) {
-			    	
-			        if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
-			            
-			        	if(racineNoeuds.item(i).getNodeName().equals("gladiateurs")){
-			        		
-			        		// Noeud contenant les gladiateurs
-			            	final Element gladiateurs = (Element) racineNoeuds.item(i);
-			            	gladiateursDuFichier = this.getGladiateursFromDOM(gladiateurs);
-			        		
-			            }else if(racineNoeuds.item(i).getNodeName().equals("armes")){
-					    	
-			            	// Noeud contenant les armes
-			            	final Element armes = (Element) racineNoeuds.item(i);
-			            	armesDuFichier = this.getArmesFromDOM(armes);
-			            	
-					    }
-				    }	
-		        }
+		    for (int i = nbRacineNoeuds-1; i>=0; i--) {
+		    	
+		        if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
+		            
+		        	if(racineNoeuds.item(i).getNodeName().equals("gladiateurs")){
+		        		
+		        		// Noeud contenant les gladiateurs
+		            	final Element gladiateurs = (Element) racineNoeuds.item(i);
+		            	gladiateursDuFichier = this.getGladiateursFromDOM(gladiateurs);
+		        		
+		            }else if(racineNoeuds.item(i).getNodeName().equals("armes")){
+				    	
+		            	// Noeud contenant les armes
+		            	final Element armes = (Element) racineNoeuds.item(i);
+		            	armesDuFichier = this.getArmesFromDOM(armes);
+		            	
+				    }
+			    }	
+	        }
         }
         catch (final ParserConfigurationException e) {
             e.printStackTrace();
@@ -97,15 +94,21 @@ public class ReadXMLFile {
         }		
     }
     
-    public static ArrayList<Gladiateur> getGladiateursDuFichier() {
+    private static ArrayList<Gladiateur> getGladiateursDuFichier() {
 		return gladiateursDuFichier;
 	}
 
+	private static void setGladiateursDuFichier(ArrayList<Gladiateur> gladiateursDuFichier) {
+		ReadXMLFile.gladiateursDuFichier = gladiateursDuFichier;
+	}
 
-    public static ArrayList<Arme> getArmesDuFichier() {
+	private static ArrayList<Arme> getArmesDuFichier() {
 		return armesDuFichier;
 	}
 
+	private static void setArmesDuFichier(ArrayList<Arme> armesDuFichier) {
+		ReadXMLFile.armesDuFichier = armesDuFichier;
+	}
 
 	/**
      * Recupere la liste des gladiateurs du fichier xml et les instancies puis stocke tous les gladiateurs instanciees dans un tableau
@@ -140,6 +143,7 @@ public class ReadXMLFile {
 		    	int agiliteGladiateur = Integer.parseInt(agilite.getTextContent());
 		    	
 		    	gladiateursDuDOM.add(GGladiateur.ajouterRetiaire(idGladiateur, nomGladiateur, agiliteGladiateur));
+		    	
 		    	
 		    }else{
 		    	
@@ -210,7 +214,7 @@ public class ReadXMLFile {
 		    int puissanceDefensiveArme = Integer.parseInt(puissanceDefensive.getTextContent());
 		   
 		    Arme nouvelleArme = GArme.ajouterArme(idArme, nomArme, puissancOffensiveArme, puissanceDefensiveArme);
-		    
+
 		    armesDuDOM.add(nouvelleArme);
 	    }
 	    

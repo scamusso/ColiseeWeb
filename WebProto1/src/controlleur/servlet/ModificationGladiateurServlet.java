@@ -43,7 +43,6 @@ public class ModificationGladiateurServlet extends HttpServlet {
 		int agilite = Integer.parseInt(req.getParameter("agilite"));
 		int idGladiateur = Integer.parseInt(req.getParameter("idGladiateur"));
 		Gladiateur gladiateur = partie.getGladiateur(idGladiateur);
-		
 		gladiateur.setNom(nom);
 		
 		//Verification du type donné et du type du gladiateur pour eviter une erreur de cast entre mirmillion/gladiateur
@@ -58,7 +57,7 @@ public class ModificationGladiateurServlet extends HttpServlet {
 			{
 				partie.supprimerGladiateur(idGladiateur);
 				try {
-					partie.creerRetiaire(idGladiateur, nom, agilite);
+					partie.creerRetiaireID(idGladiateur, nom, agilite);
 				} catch (Exception e1) {
 					req.setAttribute("contexteXML", partie);
 					req.getRequestDispatcher("sauvegardeXML").forward(req, resp);
@@ -77,7 +76,7 @@ public class ModificationGladiateurServlet extends HttpServlet {
 			{
 				partie.supprimerGladiateur(idGladiateur);
 				try {
-					partie.creerMirmillon(idGladiateur, nom, poids);
+					partie.creerMirmillonID(idGladiateur, nom, poids);
 				} catch (Exception e1) {
 					req.setAttribute("contexteXML", partie);
 					req.getRequestDispatcher("sauvegardeXML").forward(req, resp);

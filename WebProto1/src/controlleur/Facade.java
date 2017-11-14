@@ -91,7 +91,7 @@ public class Facade {
 	 * @throws Exception
 	 */
 	
-	public static Gladiateur creerRetiaire(int idGladiateur, String pNom, int pAgilite) throws Exception {
+	public static Gladiateur creerRetiaireID(int idGladiateur, String pNom, int pAgilite) throws Exception {
 		return gGladiateur.ajouterRetiaire(idGladiateur, pNom, pAgilite);
 	}
 
@@ -103,7 +103,7 @@ public class Facade {
 	 * @return le gladiateur cr�er
 	 * @throws Exception 
 	 */
-	public static Gladiateur creerMirmillon(int idGladiateur, String pNom, int pPoids) throws Exception {
+	public static Gladiateur creerMirmillonID(int idGladiateur, String pNom, int pPoids) throws Exception {
 		return gGladiateur.ajouterMirmillon(idGladiateur, pNom, pPoids);
 	}
 
