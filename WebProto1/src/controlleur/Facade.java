@@ -71,11 +71,13 @@ public class Facade {
 		return gGladiateur.ajouterRetiaire(pNom, pAgilite);
 	}
 
+
 	/**
 	 * Creer un Mirmillon dans la partie
+	 * 
 	 * @param pNom nom du gladiateur
-	 * @param pAgilite agilit� du gladiateur
-	 * @return le gladiateur cr�er
+	 * @param pPoids poids du gladiateur
+	 * @return le gladiateur crée
 	 */
 	public static Gladiateur creerMirmillon(String pNom, int pPoids) {
 		return gGladiateur.ajouterMirmillon(pNom, pPoids);
@@ -84,11 +86,11 @@ public class Facade {
 
 	/**
 	 *  Créer un Retiaire dans la partie
-	 * @param idGladiateur
+	 * @param idGladiateur id du gladiateur
 	 * @param pNom nom du gladiateur
 	 * @param pAgilite agilitéé du gladiateur
 	 * @return le gladiateur créer
-	 * @throws Exception
+	 * @throws Exception Erreur lors de la creation du retiaire avec un ID
 	 */
 	
 	public static Gladiateur creerRetiaireID(int idGladiateur, String pNom, int pAgilite) throws Exception {
@@ -97,12 +99,13 @@ public class Facade {
 
 	/**
 	 * Ce�er un Mirmillon dans la partie
-	 * @param idGladiateur
+	 * @param idGladiateur id du gladiateur
 	 * @param pNom nom du gladiateur
-	 * @param pAgilite agilit� du gladiateur
-	 * @return le gladiateur cr�er
-	 * @throws Exception 
+	 * @param pPoids poids du gladiateur
+	 * @return le gladiateur
+	 * @throws Exception erreur lors de la creation du mirmillon avec un ID
 	 */
+
 	public static Gladiateur creerMirmillonID(int idGladiateur, String pNom, int pPoids) throws Exception {
 		return gGladiateur.ajouterMirmillon(idGladiateur, pNom, pPoids);
 	}
@@ -141,7 +144,7 @@ public class Facade {
 	
 	/**
 	 * Retourne la liste des agresseur du gladiateur dont l'id est pass� en param�tre
-	 * @param pIdGladiateur
+	 * @param pIdGladiateur id du gladiateur
 	 * @return liste des gladiateurs (objet) 
 	 */
 	public static ArrayList<Gladiateur> listerAgresseurs(int pIdGladiateur) {
@@ -153,8 +156,8 @@ public class Facade {
 
 	/**
 	 * Renvoie une chaine de carractere
-	 * @param pIdGladiateur
-	 * @return String 
+	 * @param pIdGladiateur id du gladiateur
+	 * @return String  salutation du gladiateur
 	 */
 	public static String faireSaluerGladiateur(int pIdGladiateur) {
 		if (gGladiateur.getGladiateur(pIdGladiateur) !=  null){
@@ -165,8 +168,8 @@ public class Facade {
 
 	/**
 	 * Retourne le rapport du gladiateur dont l'id est passé en paramètre
-	 * @param pIdGladiateur
-	 * @return String
+	 * @param pIdGladiateur id du gladiateur
+	 * @return String rapport du gladiateur
 	 */
 	public static String faireRapport(int pIdGladiateur) {
 		if (gGladiateur.getGladiateur(pIdGladiateur) !=  null){
@@ -177,9 +180,10 @@ public class Facade {
 
 	/**
 	 * Retourne les armes du gladiateur dont l'id est passé en paramètre
-	 * @param pIdGladiateur
-	 * @return ArrayList<Arme>
+	 * @param pIdGladiateur id du gladiateur
+	 * @return les armes du gladaiteurs
 	 */
+
 	public static ArrayList<Arme> declarerArmes(int pIdGladiateur) {
 		if (gGladiateur.getGladiateur(pIdGladiateur) !=  null){
 			return gGladiateur.getGladiateur(pIdGladiateur).getMesArmes();
@@ -199,8 +203,8 @@ public class Facade {
 	}
 	
 	/**
-	 * Supprime le gladiateur dont l'id est passé en paramètre
-	 * @param pIdGladiateur : int
+	 * Supprime l'arme dont l'id est passé en paramètre
+	 * @param pIdArme id de l'arme
 	 */
 	public static void supprimerArme(int pIdArme) {
 		if (gArme.getArme(pIdArme) !=  null){
@@ -244,8 +248,8 @@ public class Facade {
 
 	/**
 	 * Retourne la description d'une arme en fonction de l'id passé en paramètre
-	 * @param pIdArme
-	 * @return String
+	 * @param pIdArme id de l'arme
+	 * @return String description de l'arme
 	 */
 	public static String decrireArme(int pIdArme) {
 		if (gArme.getArme(pIdArme) !=  null){
@@ -256,8 +260,8 @@ public class Facade {
 
 	/**
 	 * Renvoie le nom de l'arme dont l'id est passé en paramètre
-	 * @param pIdArme
-	 * @return String
+	 * @param pIdArme Id de l'arme
+	 * @return String nom de l'arme
 	 */
 	public static String nomArme(int pIdArme) {
 		if (gArme.getArme(pIdArme) !=  null){

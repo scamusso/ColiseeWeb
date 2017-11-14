@@ -41,11 +41,11 @@ public class GGladiateur {
 	
 	/**
 	 * Ajoute un gladiateur de type Mirimillon ï¿½ la lste des gladiateurs
-	 * @param idGladiateur
+	 * @param idGladiateur id du gladiateur
 	 * @param pNom nom du gladiateur
 	 * @param pPoids son poids
 	 * @return l'objet gladiateur crï¿½er
-	 * @throws Exception 
+	 * @throws Exception Erreur lors de l'ajout du mirmillon
 	 */
 	public static Gladiateur ajouterMirmillon(int idGladiateur, String pNom, int pPoids) throws Exception {
 		tousLesGladiateurs.add(new Mirmillon(idGladiateur,pNom,pPoids));
@@ -66,11 +66,11 @@ public class GGladiateur {
 	
 	/**
 	 * Ajoute un gladiateur de type Mirimillon ï¿½ la lste des gladiateurs
-	 * @param idGladiateur
+	 * @param idGladiateur id du gladiateur
 	 * @param pNom nom du gladiateur
 	 * @param pAgilite son agilitï¿½
-	 * @return l'objet gladiateur crï¿½er
-	 * @throws Exception 
+	 * @return l'objet gladiateur crée
+	 * @throws Exception erreur lors de l'ajout du retiaire
 	 */
 	public static Gladiateur ajouterRetiaire(int idGladiateur, String pNom, int pAgilite) throws Exception {
 		tousLesGladiateurs.add(new Retiaire(idGladiateur,pNom,pAgilite));
@@ -79,7 +79,7 @@ public class GGladiateur {
 	
 	/**
 	 * Méthode qui renvoie l'ensembles des gladiateurs en jeu
-	 * @return Liste de gladiateurs "ArrayList<Gladiateur>()"
+	 * @return Liste de gladiateurs 
 	 */
 	public static ArrayList<Gladiateur> getTousLesGladiateurs() {
 		return tousLesGladiateurs;
@@ -87,8 +87,8 @@ public class GGladiateur {
 	
 	/**
 	 * Methode qui retourne le gladiateur dont l'id est passé en paramètre
-	 * @param pIdGladiateur
-	 * @return Gladiateur
+	 * @param pIdGladiateur id du gladiateur
+	 * @return Gladiateur gladiateur concerné
 	 */
 	public static Gladiateur getGladiateur(int pIdGladiateur) {
 		for(Gladiateur gladiateur : tousLesGladiateurs) {
@@ -101,7 +101,7 @@ public class GGladiateur {
 	
 	/**
 	 * Supprime de la liste des gladiateurs le gladiateur correspondant à l'id
-	 * @param pIdGladiateur
+	 * @param pIdGladiateur id du gladiateur a supprimer
 	 */
 	public static  void supprimerGladiateur(int pIdGladiateur) {
 		Gladiateur gladiateur = getGladiateur(pIdGladiateur);
@@ -111,7 +111,7 @@ public class GGladiateur {
 	
 	/**
 	 * Supprime de la liste des gladiateurs le gladiateur passer en parametre
-	 * @param pGladiateur
+	 * @param pGladiateur gladiateur a supprimer
 	 */
 	public static void supprimerGladiateur(Gladiateur pGladiateur) {
 		tousLesGladiateurs.remove(pGladiateur);

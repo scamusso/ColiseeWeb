@@ -22,8 +22,8 @@ public abstract class Gladiateur {
 	/**
 	 * Constructeur
 	 * 
-	 * @param idGladiateur
-	 * @param nomGladiateur
+	 * @param idGladiateur id du gladiateur
+	 * @param nomGladiateur nom du gladiateur
 	 * 
 	 * 
 	 */
@@ -38,7 +38,7 @@ public abstract class Gladiateur {
 	 * 
 	 * Permet d'afficher les armes du gladiateur
 	 * 
-	 * @return
+	 * @return un talbeau contenant les armes du gladiateur
 	 */
 	public String[] declarerMesArmes() {
 		String tableauArmes[] = new String[mesArmes.size()];
@@ -57,7 +57,7 @@ public abstract class Gladiateur {
 	 * 
 	 * Savoir si un gladiateur possede une arme
 	 * 
-	 * @return
+	 * @return vrai si le gladiateur a l'arme, faux sinon
 	 */
 	public boolean possedeArme(int idArmeAVerifier) {
 		String tableauArmes[] = new String[mesArmes.size()];
@@ -74,7 +74,7 @@ public abstract class Gladiateur {
 	 * 
 	 * Permet de savoir si le gladiateur est bien portant (c'est a dire que sa vie est a son maximum)
 	 * 
-	 * @return
+	 * @return vrai si le gladiateur a toute sa vie
 	 */
 	public boolean estBienPortant() {
 		return (cVieInitiale == this.vie);	
@@ -84,7 +84,7 @@ public abstract class Gladiateur {
 	/**
 	 * Permet de savoir si le gladiateur est blessé, c'est a dire vivant mais pas bien portant
 	 * 
-	 * @return
+	 * @return vrai si le gladiateur n'a pas toute sa vie mais n'est pas mort
 	 */
 	public boolean estBlesse() {
 		if (this.vie < cVieInitiale && this.vie!=0){
@@ -98,7 +98,7 @@ public abstract class Gladiateur {
 	 * 
 	 * Permet de savoir si le gladiateur est mort
 	 * 
-	 * @return
+	 * @return vrai si le gladiateur n'a plus de vie
 	 */
 	public boolean estMoribond() {
 		if (this.vie==0){
@@ -112,8 +112,8 @@ public abstract class Gladiateur {
 	 * 
 	 * Permet au gladiateur d'en frapper un autre avec une arme
 	 * 
-	 * @param gladiateur
-	 * @param arme
+	 * @param gladiateur gladiateur concerné
+	 * @param arme arme concernée
 	 */
 	public void frapper(Gladiateur gladiateur, Arme arme) {
 		gladiateur.recevoirCoup(this, arme.getPuissanceOffensive() + this.getForce());

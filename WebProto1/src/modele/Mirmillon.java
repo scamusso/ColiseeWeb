@@ -20,9 +20,9 @@ public class Mirmillon extends Gladiateur {
 	 * 
 	 * Constructeur de Mirmillon
 	 * 
-	 * @param idGladiateur
-	 * @param nomGladiateur
-	 * @param agilite
+	 * @param idGladiateur id du gladiateur
+	 * @param nomGladiateur nom du gladiateur
+	 * @param poids poids  du gladiateur
 	 */
 	public Mirmillon(int idGladiateur, String nomGladiateur, int poids) {
 		super(idGladiateur, nomGladiateur);

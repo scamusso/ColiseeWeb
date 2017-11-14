@@ -39,10 +39,10 @@ public class Arme {
 	/**
 	 * Constructeur Arme
 	 * l'id, le nom, les puissances offensive et defensive sont données à la construction de l'arme 
-	 * @param idArme
-	 * @param nomArme
-	 * @param puissOff
-	 * @param puissDef
+	 * @param idArme id de l'arme
+	 * @param nomArme nom de l'arme
+	 * @param puissOff puissance offensive de l'arme
+	 * @param puissDef puissance defensive de l'arme
 	 */
 	public Arme(int idArme, String nomArme, int puissOff, int puissDef){
 		this.idArme = idArme;
@@ -53,7 +53,7 @@ public class Arme {
 	
 	/**
 	 * Retourne la liste des caracteristique de l'arme
-	 * @return String
+	 * @return String description de l'arme
 	 */
 	public String description(){
 		
@@ -62,7 +62,7 @@ public class Arme {
 	}
 	/**
 	 * Retourne le nom de l'arme
-	 * @return String
+	 * @return String nom de l'arme
 	 */
 	public String getNomArme() {
 		return this.nomArme;
@@ -70,7 +70,7 @@ public class Arme {
 	
 	/**
 	 * Retourne la puissance offensive de l'arme
-	 * @return int
+	 * @return int puissance offensive de l'arme
 	 */
 	public int getPuissanceOffensive() {
 		return this.puissanceOffensive;
@@ -78,7 +78,7 @@ public class Arme {
 	
 	/**
 	 * Retourne l'id de l'arme
-	 * @return int
+	 * @return int id de l'arme
 	 */
 	public int getIdArme() {
 		return this.idArme;
@@ -86,7 +86,7 @@ public class Arme {
 	
 	/**
 	 * Retourne la puissance defensive de l'arme
-	 * @return int
+	 * @return int puissance deffensive de l'arme
 	 */
 	public int getPuissanceDefensive() {
 		return this.puissanceDefensive;
@@ -94,7 +94,7 @@ public class Arme {
 	
 	/**
 	 * Met a jour la puissance offensive de l'arme
-	 * @param puissanceOffensive
+	 * @param puissanceOffensive puissance offensive
 	 */
 	public void setPuissanceOffensive(int puissanceOffensive) {
 		if(puissanceOffensive>0){
@@ -106,7 +106,7 @@ public class Arme {
 	}
 	/**
 	 * Met a jour la puissance defensive de l'arme
-	 * @param puissanceDefensive
+	 * @param puissanceDefensive puissance defensive
 	 */
 	public void setPuissanceDefensive(int puissanceDefensive) {
 		if(puissanceDefensive>0){
@@ -117,8 +117,8 @@ public class Arme {
 	}
 	
 	/**
-	 * Met a jour la puissance defensive de l'arme
-	 * @param puissanceDefensive
+	 * Met a jour le nom de l'arme
+	 * @param nomArme nom de l'arme
 	 */
 	public void setNom(String nomArme) {
 		this.nomArme = nomArme;

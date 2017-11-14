@@ -60,7 +60,7 @@ public class SauvegardeXMLServlet extends HttpServlet {
 	 * 
 	 * Elle creer un fichier XML contenant les informations de la partie
 	 * 
-	 * @param partie
+	 * @param partie Facade contenant le jeu
 	 */
 	
 	public void saveToXML(Facade partie) {
