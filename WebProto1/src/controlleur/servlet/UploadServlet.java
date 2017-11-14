@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import controlleur.Facade;
+import controlleur.GGladiateur;
 import modele.Gladiateur;
 import modele.Mirmillon;
 import modele.ReadXMLFile;
@@ -44,21 +46,7 @@ public class UploadServlet extends HttpServlet {
 				if (fichierValide)  {
 					//Lecture du fichier XML
 					readerXML = new ReadXMLFile(fileContent);
-					/*
-					//Recuperation des données de l'objet readerXML pour les mettres dans la partie
-					for(Gladiateur gladiateur : readerXML.getGladiateursDuFichier()) {
-						if (gladiateur.getType().equals("mirmillon") || gladiateur.getType().equals("Mirmillon") ) 
-						{
-							Mirmillon mirmillon = (Mirmillon) gladiateur;
-							partie.creerMirmillon(gladiateur.getIdGladiateur(), gladiateur.getNom(), mirmillon.getPoids());
-						}
-						else
-						{
-							Retiaire retiaire = (Retiaire) gladiateur;
-							partie.creerRetiaire(gladiateur.getIdGladiateur(), gladiateur.getNom(), retiaire.getAgilite());
-						}
-					}
-*/
+
 					//Envoie de la facade contenant les informations du XML a la page jsp
 					req.setAttribute("contexteXML", partie);
 					req.getRequestDispatcher("sauvegardeXML").forward(req, resp);

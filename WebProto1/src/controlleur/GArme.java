@@ -48,7 +48,7 @@ public class GArme {
 	 * @return arme
 	 */
 	public static Arme ajouterArme(int idArme, String nomArme, int puissOff, int puissDef) throws Exception {
-		toutesLesArmes.add(new Arme(idArme, nomArme, puissOff, puissDef));		
+		toutesLesArmes.add(new Arme(nextIdArme++, nomArme, puissOff, puissDef));		
 		return toutesLesArmes.get(toutesLesArmes.size()-1);
 	}
 	

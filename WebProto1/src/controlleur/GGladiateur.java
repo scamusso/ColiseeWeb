@@ -48,7 +48,7 @@ public class GGladiateur {
 	 * @throws Exception 
 	 */
 	public static Gladiateur ajouterMirmillon(int idGladiateur, String pNom, int pPoids) throws Exception {
-		tousLesGladiateurs.add(new Mirmillon(idGladiateur,pNom,pPoids));
+		tousLesGladiateurs.add(new Mirmillon(GGladiateur.nextIdGladiateur++,pNom,pPoids));
 		return tousLesGladiateurs.get(tousLesGladiateurs.size()-1);
 	}
 	
@@ -72,7 +72,7 @@ public class GGladiateur {
 	 * @throws Exception 
 	 */
 	public static Gladiateur ajouterRetiaire(int idGladiateur, String pNom, int pAgilite) throws Exception {
-		tousLesGladiateurs.add(new Retiaire(idGladiateur,pNom,pAgilite));
+		tousLesGladiateurs.add(new Retiaire(GGladiateur.nextIdGladiateur++,pNom,pAgilite));
 		return tousLesGladiateurs.get(tousLesGladiateurs.size()-1);
 	}
 	

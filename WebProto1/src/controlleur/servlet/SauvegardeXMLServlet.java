@@ -128,11 +128,6 @@ public class SauvegardeXMLServlet extends HttpServlet {
 				//Creation de la structure des armes, il peut y avoir plusieurs armes par gladiateur, d'ou la boucle for
 				gladiateurSousNode = dom.createElement("armes");
 				gladiateurNode.appendChild(gladiateurSousNode);
-
-				
-				System.out.println(gladiateur.getMesArmes().size());
-				System.out.println("----------------------------");
-
 				
 				for(Arme armeGladiateur : gladiateur.getMesArmes()){
 					gladiateurArmeNode = dom.createElement("arme");
