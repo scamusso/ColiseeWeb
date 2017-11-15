@@ -51,8 +51,8 @@ public class Mirmillon extends Gladiateur {
 	 * On enregistre aussi l'agresseur pour pouvoir restituer la liste en cas de besoin
 	 * Pour le Mirmillon, on enregistre l'agresseur
 	 * 
-	 * @param agresseur
-	 * @param forceCoup
+	 * @param agresseur gladiateur qui agresse 
+	 * @param forceCoup degat infligés
 	 */
 	public void recevoirCoup(Gladiateur agresseur, int forceCoup) {
 		super.recevoirCoup(agresseur, forceCoup);

@@ -125,14 +125,17 @@ public class Facade {
 	}
 
 
+
 	/**
-	 * @return l'arme recherchée
+	 * @param idArme id de l'arme
+	 * @return  l'arme recherchée
 	 */
 	public static Arme getArme (int idArme) {
 		return gArme.getArme(idArme);
 	}
 	
 	/**
+	 * @param idGladiateur id du gladiateur
 	 * @return le gladiateur recherché
 	 */
 	public static Gladiateur getGladiateur (int idGladiateur) {

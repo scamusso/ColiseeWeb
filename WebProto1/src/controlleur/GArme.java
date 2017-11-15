@@ -32,7 +32,7 @@ public class GArme {
 	 * @param nomArme nom de l'arme
 	 * @param puissOff puissance offensive de l'arme
 	 * @param puissDef puissance deffensive de l'arme
-	 * @return arme
+	 * @return arme arme ajoutée
 	 */
 	public static Arme ajouterArme(String nomArme, int puissOff, int puissDef) {
 		toutesLesArmes.add(new Arme(nextIdArme++, nomArme, puissOff, puissDef));		
@@ -45,7 +45,7 @@ public class GArme {
 	 * @param nomArme nom de l'arme
 	 * @param puissOff puissance offensive de l'arme
 	 * @param puissDef puissance deffensive de l'arme
-	 * @return arme
+	 * @return arme arme ajoutée
 	 */
 	public static Arme ajouterArme(int idArme, String nomArme, int puissOff, int puissDef) throws Exception {
 		toutesLesArmes.add(new Arme(nextIdArme++, nomArme, puissOff, puissDef));		

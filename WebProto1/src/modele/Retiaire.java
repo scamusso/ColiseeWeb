@@ -20,9 +20,9 @@ public class Retiaire extends Gladiateur  {
 	 * 
 	 * Constructeur de Retiaire
 	 * 
-	 * @param idGladiateur
-	 * @param nomGladiateur
-	 * @param agilite
+	 * @param idGladiateur id du gladiateur
+	 * @param nomGladiateur nom du gladiateur
+	 * @param agilite agilité du gladiateur
 	 */
 	public Retiaire(int idGladiateur, String nomGladiateur, int agilite) {
 		super(idGladiateur, nomGladiateur);
@@ -35,8 +35,8 @@ public class Retiaire extends Gladiateur  {
 	 * On enregistre aussi l'agresseur pour pouvoir restituer la liste en cas de besoin
 	 * Pour le Retiaire, on deduit les points d'agilité aux degats recus
 	 * 
-	 * @param agresseur
-	 * @param forceCoup
+	 * @param agresseur gladaiteur qui agresse
+	 * @param forceCoup force du coup donne
 	 */
 	public void recevoirCoup(Gladiateur agresseur, int forceCoup) {
 		super.recevoirCoup(agresseur, forceCoup);
@@ -47,7 +47,7 @@ public class Retiaire extends Gladiateur  {
 	 * Permet au gladiateur de faire un rapport sur lui meme
 	 * Ajout de l'agilité pour le retiaire
 	 * 
-	 * @return rapport
+	 * @return rapport rapport du gladiateur
 	 */
 	
 	public String rapport() {

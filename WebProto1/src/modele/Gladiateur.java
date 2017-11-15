@@ -57,8 +57,11 @@ public abstract class Gladiateur {
 	 * 
 	 * Savoir si un gladiateur possede une arme
 	 * 
+	 * @param idArmeAVerifier id de l'arme a verifier
+	 * 
 	 * @return vrai si le gladiateur a l'arme, faux sinon
 	 */
+
 	public boolean possedeArme(int idArmeAVerifier) {
 		String tableauArmes[] = new String[mesArmes.size()];
 		int compteur = 0;
@@ -144,7 +147,7 @@ public abstract class Gladiateur {
 	/**
 	 * Permet d'ajouter une arme a la collection du gladiateur
 	 * 
-	 * @param arme
+	 * @param arme arme a ajouter
 	 */
 	public void recevoirArme(Arme arme) {
 		boolean flagArme = false;
@@ -163,7 +166,7 @@ public abstract class Gladiateur {
 	/**
 	 * Permet d'enlever une arme de la collection du gladiateur
 	 * 
-	 * @param arme
+	 * @param arme arme a enlever
 	 */
 	public void enleverArme(Arme arme) {
 		boolean flagArme = false;
@@ -185,8 +188,8 @@ public abstract class Gladiateur {
 	 * Permet de descendre la vie du gladiateur en fonction de la force du coup recu
 	 * On enregistre aussi l'agresseur pour pouvoir restituer la liste en cas de besoin
 	 * 
-	 * @param agresseur
-	 * @param forceCoup
+	 * @param agresseur gladiateur qui agresse
+	 * @param forceCoup degat du coup
 	 */
 	public void recevoirCoup(Gladiateur agresseur, int forceCoup) {
 		if (agresseur != this && (!estBienPortant() && !estBlesse())){
@@ -206,7 +209,7 @@ public abstract class Gladiateur {
 	/**
 	 * Permet au gladiateur de saluer / se presenter
 	 * 
-	 * @return
+	 * @return salutation du gladiateur
 	 */
 	public String saluer() {
 		String salutation = "Ave Caesar, " + getType() + " N°" + getIdGladiateur() + " : " + getNom();

@@ -160,7 +160,7 @@ public class SauvegardeXMLServlet extends HttpServlet {
 				
 				
 				//ATTENTION puissancOffensive dans le XML de base
-				armeSousNode = dom.createElement("puissanceOffensive");
+				armeSousNode = dom.createElement("puissancOffensive");
 				armeSousNode.appendChild(dom.createTextNode(String.valueOf(arme.getPuissanceOffensive())));
 				armeNode.appendChild(armeSousNode);
 				armeSousNode = dom.createElement("puissanceDefensive");

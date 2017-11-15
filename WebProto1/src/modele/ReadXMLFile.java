@@ -114,7 +114,7 @@ public class ReadXMLFile {
      * Recupere la liste des gladiateurs du fichier xml et les instancies puis stocke tous les gladiateurs instanciees dans un tableau
      * @param gladiateurs noeuds XML contenant les gladiateurs
      * @return tableau des gladiateurs instanciees
-     * @throws Exception
+     * @throws Exception erreur lors de la lecture des gladiateurs du fichier
      */
     public ArrayList getGladiateursFromDOM(Element gladiateurs) throws Exception{
     	ArrayList<Gladiateur> gladiateursDuDOM = new ArrayList<>();
@@ -182,7 +182,7 @@ public class ReadXMLFile {
      * Recupere la liste d'armes du fichier xml et les instancies puis stocke toutes les armes instanciees dans un tableau
      * @param armes noeuds XML contenant les armes
      * @return tableau des armes instanciees
-     * @throws Exception
+     * @throws Exception erreur lors de la lecture des armes du fichier
      */
 	public ArrayList getArmesFromDOM(Element armes) throws Exception{
     	ArrayList<Arme> armesDuDOM = new ArrayList<>();
