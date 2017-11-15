@@ -1,4 +1,5 @@
 package controlleur.servlet;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -175,7 +176,10 @@ public class SauvegardeXMLServlet extends HttpServlet {
 				tr.setOutputProperty(OutputKeys.INDENT, "yes");
 				tr.setOutputProperty(OutputKeys.METHOD, "xml");
 				tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-
+				// Creation du repertoire si jamais il n'existe pas
+			    File dir = new File("C://temp//");
+				boolean isCreated = dir.mkdirs();
+				//Ecriture du fichier
 				tr.transform(new DOMSource(dom), 
 						new StreamResult(new FileOutputStream("C://temp//xmlSortie.xml")));
 

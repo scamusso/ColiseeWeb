@@ -28,10 +28,18 @@ public class TelechargementServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		String filename = "xmlSortie.xml";
 		String filepath = "C:\\temp";
+		
 		resp.setContentType("APPLICATION/OCTET-STREAM");
 		resp.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
 		FileInputStream fileInputStream = new FileInputStream(filepath + File.separator + filename);
  
+		
+		
+
+
+		
+		
+		
 		int i;
 		while ((i = fileInputStream.read()) != -1) {
 			out.write(i);
